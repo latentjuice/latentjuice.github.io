@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Stopwatch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        #stopwatch {
+            font-size: 30px;
+            color: #333;
+        }
+
+        #loading {
+            font-size: 20px;
+            color: #666;
+        }
+
+        .time {
+            font-weight: bold;
+            font-size: 2em;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <h1>Time Since Last Update</h1>
+    <p id="loading">Loading the last commit time...</p>
+    <div id="stopwatch">
+        <p><span id="time">Loading...</span></p>
+    </div>
+
+    <script>
+        // GitHub API URL for fetching the latest commit of a repo
+        const repoUrl = 'https://api.github.com/repos/latentjuice/latentjuice.github.io/commits/main';
+
+        // Replace YOUR_USERNAME and YOUR_REPO with your GitHub username and repository name
+        // Make sure the repository's main branch is correctly specified (e.g., "main" or "master")
+
+        // Function to calculate and update the stopwatch
+        function updateStopwatch(lastCommitTime) {
+            // Convert the last commit time to a Date object
+            const commitDate = new Date(lastCommitTime);
+            
+            // Update the display immediately
+            const timeElement = document.getElementById('time');
+            const loadingElement = document.getElementById('loading');
+            loadingElement.style.display = 'none';
+            timeElement.style.display = 'inline';
+
+            // Function to calculate the difference between now and the commit time
+            function updateTime() {
+                const now = new Date();
+                const elapsedTime = now - commitDate; // in milliseconds
+
+                const seconds = Math.floor(elapsedTime / 1000) % 60;
+                const minutes = Math.floor(elapsedTime / (1000 * 60)) % 60;
+                const hours = Math.floor(elapsedTime / (1000 * 60 * 60)) % 24;
+                const days = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
+
+                // Format the time into a readable string
+                const timeString = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                timeElement.textContent = timeString;
+            }
+
+            // Update every second
+            setInterval(updateTime, 1000);
+        }
+
+        // Fetch the last commit time using the GitHub API
+        fetch(repoUrl)
+            .then(response => response.json())
+            .then(data => {
+                const lastCommitDate = data.commit.committer.date;
+                updateStopwatch(lastCommitDate);
+            })
+            .catch(error => {
+                console.error('Error fetching commit data:', error);
+                document.getElementById('loading').textContent = 'Failed to load commit data.';
+            });
+    </script>
+</body>
+</html>
