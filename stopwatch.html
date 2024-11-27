@@ -3,37 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Stopwatch</title>
+    <title>Hold me accountable!</title>
+    <link rel="icon" href="img/latentjuice_icon.jpg">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            color:#555555;
+            background-color: #fff8e7;
             margin: 0;
             padding: 0;
             text-align: center;
             padding-top: 50px;
         }
 
+        h1, h2, h3, h4, h5, h6 {
+            color: rgb(255, 98, 0); /* Blue color for headings */
+        }
+
         #stopwatch {
             font-size: 30px;
-            color: #333;
+            color: #555555;
         }
 
         #loading {
             font-size: 20px;
-            color: #666;
-        }
-
-        .time {
-            font-weight: bold;
-            font-size: 2em;
-            color: #3498db;
+            color: #555555;
         }
     </style>
 </head>
 <body>
     <h1>Time Since Last Update</h1>
-    <p id="loading">Loading the last commit time...</p>
+    <p id="loading">Loading...</p>
     <div id="stopwatch">
         <p><span id="time">Loading...</span></p>
     </div>
