@@ -1,1 +1,9 @@
-- can anyone see this?
+posts:
+- value vs exclusivity
+- mannerisms of eating
+- causal feedback of behavior
+
+features:
+- right-side clickable TOC
+- change formatting for mobile
+- reusable components?
