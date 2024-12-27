@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="title" content="zooming out">
+    <style>
+        body {
+            color:#555555;
+            background-color: #fff8e7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: rgb(255, 98, 0);
+        }
+    </style>
+    <title>zooming out</title>
+    <link rel="icon" href="img/latentjuice_icon.jpg">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.min.js"></script>
+</head>
+
+<body>
+<h1>zooming out</h1>
+<p>
+    i'm fascinated by frame shifts that dissolve the barrier between two seemingly unrelated ideas.
+    suddenly you get inundated with simpler frameworks to think about things that didn't make any sense previously.
+    you get to understand a deeper, truer(?) sense of the "why" behind what you previously took at face value.
+</p>
+<br>
+<h2>some math</h2>
+<p>
+    one example of this that blew my mind was when memorizing some trig identities for precalculus (yes, i know, unfortunately most of my examples tend to be stempilled).
+    unfortunately this post might have a bit of a math prereq so it might not resonate with everyone, but anyway --
+    we had to memorize the sin and cosine addition formulas: 
+        $$\sin(a+b) = \sin(a)\cos(b) + \sin(b)\cos(a)$$ 
+        $$\cos(a+b) = \cos(a)\cos(b) - \sin(a)\sin(b)$$
+    at the time i just took it at face value. how else could i take it? 
+    i suppose not everything is supposed to be easily intuitable. 
+    it still kinda bugged me how these two formulas seemed *almost* similar, but not quite. 
+    <ul>
+        <li>why does one have a plus, and one have a minus?</li>
+        <li>why does one multiply cos with cos and sin with sin, but the other mutiplies cos with sin?</li>
+        <li>why does this multiplying happen if we're adding the argument of trig functions?</li>
+    </ul>
+</p>
+<p>
+    later on in the same class we learned about euler's formula: $$e^{ix} = \cos(x) + i\sin(x).$$
+    this is, in and of itself, something i was like "wtf are you talking about" and just had to take at face value at the time. 
+    but i suspended my disbelief, and trusted this weird looking formula. (and if you are also in a similar boat rn, just trust me on this formula and hopefully i can walk you through the next paragraph in a way that isn't too complicated)
+</p>
+<p>
+    the cool thing was: this crazy chimera of a formula, when applied properly, effortlessly produced both those earlier two trig identities that i tried so hard to memorize.
+    just replace x with a+b: you get $$e^{i*(a+b)} = \cos(a+b) + i\sin(a+b).$$ 
+    you see how we have both of the terms on the right side are the trig identities that we're trying to figure out? 
+    let's see if euler's formula can help us simplify the left side to something more reasonable.
+    if we split the left side using basic power laws, we get $$e^{i*a} * e^{i*b} = \cos(a+b) + i\sin(a+b).$$
+    next, let's expand the expressions on the left side with euler's formula, so we're using trig functions on both sides: $$(\cos(a) + i\sin(a))*(\cos(b) + i\sin(b)) = \cos(a+b) + i\sin(a+b).$$
+    finally, if you multiply and distribute out the left side, you get $$\cos(a)\cos(b) - \sin(a)\sin(b) + i*(\sin(a)\cos(b) + \cos(a)\sin(b)) = \cos(a+b) + i\sin(a+b).$$
+    both sides of the expression are a complex number, and for these two complex numbers to be equal, both the real and imaginary parts must be equal.
+    if we make sure the real parts are equal, we get $$\cos(a)\cos(b) - \sin(a)\sin(b) = \cos(a+b).$$ if we set the imaginary parts equal, we get $$\sin(a)\cos(b) + \cos(a)\sin(b) = \sin(a+b).$$ 
+    isn't that so cool? if we zoom out and get a sense of something more general, these two specifics "fall out" so neatly. we get both of these expressions with one formula -- a BOGO deal!! 
+</p>
+<br>
+<p>
+    best of all, all the questions i had earlier make sense now. 
+    <ul>
+        <li>one expression has a minus sign because we multiplied \(i^2=-1\)</li>
+        <li>one has cos times cos and sin with sin, and the other multiplies cos with sin, because that's how we distribute the multiplication</li>
+        <li>the multiplication arises from the exponential! the exponential is special because it has the property that adding inputs is the same as multiplying outputs (i.e. \(e^{a+b}=e^a*e^b)\). there's no simple way to add inputs to a trig function, but multiplying the outputs is simple. our zoomed out picture showed us how trig functions relate to exponentials, so we could translate our problem to the easier of those two options and translate back.</li>
+
+    </ul>
+</p>
+<h2>what am i trying to get at lol</h2>
+<p>
+    in other words, zooming out allows us to observe how two distinct concepts (often even diametrically opposed concepts!) are really just the same thing about different axes of symmetry. if we can understand how to manipulate things across this axis of symmetry, certain problems turn from unapproachable to trivial.
+    even though i didn't have the right frame of mind to appreciate this formula (i thought it was incredibly weird-looking), i gave it a chance to prove its' elegance.
+</p>
+<h2>other thoughts (that might be posts of their own down the road)</h2>
+<p>
+    there is a trap in seeking generality as the end-all be-all. i tend to think that if i explain the general picture well enough to someone else, the specifics should fall out easily. 
+    but it doesn't work out so neatly, because generality requires abstraction. 
+    if i tell a toddler that 1+1=2, they may not understand that this applies to everything that can be counted.
+    i mean that 1 apple slice + 1 apple slice = 2 apple slices, and 1 hour of playtime + 1 hour of playtime = 2 hours of playtime, and so on. 
+    the concept of "one", "+", and "two" are, in and of itself, abstractions.
+    in our example, we're abstracting away what it means to raise a base to an exponent. what does it *mean* to raise something to the i-th power? this feels made up! (surprise: it's all made up -- the more important question is whether it's useful, and in which contexts).
+</p>
+<p>
+    sometimes people aren't willing to take that leap of faith to zoom out, bc "it's all made up", as if the mental frameworks we have around us are handed down from god and not things we decided to make sense of the world bc it was useful. 
+</p>
+<p>
+    i have the feeling that zooming out might similarly resolve the distinctions between "good" and "bad". if, in our scope, thing 1 Is Good and thing 2 Is Bad, it seems like these are fundamentally irreconcilable. but zooming out, we may find that there's a symmetry here too, and that the general truth is not whether thing X is good or bad, but that thing X **IS**. smth similar may be the case with "self" vs "other"
+</p>
+<p>
+    anyway i hope some of this made sense, please lmk if i can help clarify any of this 😅
+</p>
+</body>
